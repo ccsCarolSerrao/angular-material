@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class ToolbarComponent implements OnInit {
 
   @Output() toggleSidenav = new EventEmitter<void>();
+  @Output() toggleTheme = new EventEmitter<void>();
+  @Output() toggleDirection = new EventEmitter<void>();
 
   constructor(
     private dialog: MatDialog, 
@@ -19,13 +21,6 @@ export class ToolbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  }
-
-
-  openSnackBar(message: string, action: string): MatSnackBarRef<SimpleSnackBar> {
-    return this.snackBar.open(message, action, {
-      duration: 5000,
-    });
   }
 
   openAddContactDialog(): void{
@@ -40,6 +35,12 @@ export class ToolbarComponent implements OnInit {
           this.router.navigate(['contactmanager', result.id])
         });
     }
+    });
+  }
+
+  openSnackBar(message: string, action: string): MatSnackBarRef<SimpleSnackBar> {
+    return this.snackBar.open(message, action, {
+      duration: 5000,
     });
   }
 }
